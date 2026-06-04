@@ -18,6 +18,7 @@ import Image from "next/image";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+// import { toast } from "sonner";
 
 export default function SignInPage() {
   const router = useRouter();
@@ -27,6 +28,7 @@ export default function SignInPage() {
     if (isLoaded && isSignedIn) {
       const role = user?.publicMetadata.role;
       if (role) {
+        // toast.success("Signed in successfully!");
         router.push(`/${role}`);
       }
     }

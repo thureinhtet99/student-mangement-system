@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import prisma from "@/libs/prisma";
-import { getClasses } from "@/libs/actions";
+import { prisma } from "@/lib/prisma";
+import { getClasses } from "@/lib/actions";
 
 // Get classes
 export async function GET() {
@@ -8,12 +8,12 @@ export async function GET() {
     const classes = await getClasses();
     return NextResponse.json(
       { classes, success: "Fetched classes successfully" },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
     return NextResponse.json(
       { error: "Failed to fetch classes" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
     if (existingClass) {
       return NextResponse.json(
         { error: "Class with this name already exists" },
-        { status: 409 }
+        { status: 409 },
       );
     }
 
@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     return NextResponse.json(
       { error: "Failed to create class" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

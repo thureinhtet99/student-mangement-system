@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CalendarIcon } from "lucide-react";
-import { dateFormat } from "@/libs/dataTimeFormat";
+import { dateFormat } from "@/lib/dataTimeFormat";
 import { EventType } from "@/types";
 
 const Event = ({ title, description, date }: EventType) => {

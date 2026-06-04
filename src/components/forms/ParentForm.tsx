@@ -15,12 +15,12 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
-import { parentFormSchema } from "@/libs/formSchema";
+import { parentFormSchema } from "@/lib/formSchema";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Separator } from "@/components/ui/separator";
 import { useMutation } from "@tanstack/react-query";
-import { createParent, updateParent } from "@/libs/actions";
+import { createParent, updateParent } from "@/lib/actions";
 import FormActionButton from "../FormActionButton";
 import MultiSelectBox from "../MultiSelectBox";
 
@@ -40,7 +40,7 @@ const ParentForm = ({
 }) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [selectedStudents, setSelectedStudents] = useState<(string | number)[]>(
-    data?.students?.map((t: any) => t.id) || []
+    data?.students?.map((t: any) => t.id) || [],
   );
 
   const initialSelectedStudents = data?.students?.map((t: any) => t.id) || [];
@@ -83,7 +83,7 @@ const ParentForm = ({
     },
     onSuccess: () => {
       toast.success(
-        `Parent ${type === "create" ? "created" : "updated"} successfully`
+        `Parent ${type === "create" ? "created" : "updated"} successfully`,
       );
       form.reset();
       setSelectedStudents([]);
@@ -93,7 +93,7 @@ const ParentForm = ({
       toast.error(
         `Failed to ${type === "create" ? "create" : "update"} parent: ${
           error.message
-        }`
+        }`,
       );
     },
   });

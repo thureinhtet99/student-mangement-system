@@ -3,13 +3,13 @@ import { ResultListType } from "@/types";
 import { TableCell, TableRow } from "@/components/ui/table";
 import TableCard from "@/components/TableCard";
 import ResultTabs from "@/components/ResultTabs";
-import prisma from "@/libs/prisma";
-import { ITEM_PER_PAGE } from "@/libs/settings";
-import { dateFormat } from "@/libs/dataTimeFormat";
+import { prisma } from "@/lib/prisma";
+import { ITEM_PER_PAGE } from "@/lib/settings";
+import { dateFormat } from "@/lib/dataTimeFormat";
 import { auth } from "@clerk/nextjs/server";
 import { Prisma } from "@prisma/client";
 import FormContainer from "@/components/FormContainer";
-import { resultSortOrder } from "@/libs/utils";
+import { resultSortOrder } from "@/lib/utils";
 
 const renderRow = async (item: ResultListType) => {
   const { sessionClaims } = await auth();
@@ -29,8 +29,8 @@ const renderRow = async (item: ResultListType) => {
             item.score >= 80
               ? "bg-green-100 text-green-800"
               : item.score >= 40
-              ? "bg-yellow-100 text-yellow-800"
-              : "bg-red-100 text-red-800"
+                ? "bg-yellow-100 text-yellow-800"
+                : "bg-red-100 text-red-800"
           }`}
         >
           {item.score} / 100
@@ -223,7 +223,7 @@ const ResultListPage = async ({
 
   // Filter results based on active tab
   const filteredResults = processedResults.filter(
-    (item) => item.type === (isExamTab ? "exam" : "assignment")
+    (item) => item.type === (isExamTab ? "exam" : "assignment"),
   );
 
   const currentCount = isExamTab ? examCount : assignmentCount;

@@ -2,12 +2,12 @@ import { attendanceColumns } from "@/data/columns";
 import { AttendanceListType } from "@/types";
 import TableCard from "@/components/TableCard";
 import { TableCell, TableRow } from "@/components/ui/table";
-import prisma from "@/libs/prisma";
-import { ITEM_PER_PAGE } from "@/libs/settings";
+import { prisma } from "@/lib/prisma";
+import { ITEM_PER_PAGE } from "@/lib/settings";
 import { auth } from "@clerk/nextjs/server";
 import { Prisma } from "@prisma/client";
-import { resultSortOrder } from "@/libs/utils";
-import { dateFormat } from "@/libs/dataTimeFormat";
+import { resultSortOrder } from "@/lib/utils";
+import { dateFormat } from "@/lib/dataTimeFormat";
 import FormContainer from "@/components/FormContainer";
 import { Badge } from "@/components/ui/badge";
 

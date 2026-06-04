@@ -15,9 +15,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
-import { subjectFormSchema } from "@/libs/formSchema";
+import { subjectFormSchema } from "@/lib/formSchema";
 import { useState } from "react";
-import { createSubject, updateSubject } from "@/libs/actions";
+import { createSubject, updateSubject } from "@/lib/actions";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import MultiSelectBox from "../MultiSelectBox";
@@ -45,10 +45,10 @@ const SubjectForm = ({
   relatedData?: any;
 }) => {
   const [selectedLessons, setSelectedLessons] = useState<(string | number)[]>(
-    data?.lessons?.map((t: any) => t.id) || []
+    data?.lessons?.map((t: any) => t.id) || [],
   );
   const [selectedTeachers, setSelectedTeachers] = useState<(string | number)[]>(
-    data?.teachers?.map((t: any) => t.id) || []
+    data?.teachers?.map((t: any) => t.id) || [],
   );
   const initialSelectedLessons = data?.lessons?.map((t: any) => t.id) || [];
   const initialSelectedTeachers = data?.teachers?.map((t: any) => t.id) || [];
@@ -90,7 +90,7 @@ const SubjectForm = ({
     },
     onSuccess: () => {
       toast.success(
-        `Subject is ${type === "create" ? "created" : "updated"} successfully`
+        `Subject is ${type === "create" ? "created" : "updated"} successfully`,
       );
       form.reset();
       setSelectedLessons([]);
@@ -99,7 +99,7 @@ const SubjectForm = ({
     },
     onError: () => {
       toast.error(
-        `Failed to ${type === "create" ? "create" : "update"} subject`
+        `Failed to ${type === "create" ? "create" : "update"} subject`,
       );
     },
   });

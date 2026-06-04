@@ -1,6 +1,6 @@
 import { FormContainerType } from "@/types";
 import FormModal from "./FormModal";
-import prisma from "@/libs/prisma";
+import { prisma } from "@/lib/prisma";
 
 const FormContainer = async ({ table, type, data, id }: FormContainerType) => {
   let relatedData: Record<string, any> = {};

@@ -16,10 +16,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
-import { teacherFormSchema } from "@/libs/formSchema";
+import { teacherFormSchema } from "@/lib/formSchema";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { createTeacher, updateTeacher } from "@/libs/actions";
+import { createTeacher, updateTeacher } from "@/lib/actions";
 import { toast } from "sonner";
 import Image from "next/image";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -45,7 +45,7 @@ const TeacherForm = ({
 }) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [selectedSubjects, setSelectedSubjects] = useState<(string | number)[]>(
-    data?.subjects?.map((t: any) => t.id) || []
+    data?.subjects?.map((t: any) => t.id) || [],
   );
   const [selectedClassItems, setSelectedClassItems] = useState<
     (string | number)[]
@@ -102,7 +102,7 @@ const TeacherForm = ({
     },
     onSuccess: () => {
       toast.success(
-        `Teacher ${type === "create" ? "created" : "updated"} successfully`
+        `Teacher ${type === "create" ? "created" : "updated"} successfully`,
       );
       form.reset();
       setSelectedSubjects([]);
@@ -113,7 +113,7 @@ const TeacherForm = ({
     },
     onError: () => {
       toast.error(
-        `Failed to ${type === "create" ? "create" : "update"} teacher`
+        `Failed to ${type === "create" ? "create" : "update"} teacher`,
       );
     },
   });
@@ -359,7 +359,7 @@ const TeacherForm = ({
                               onChange={(e) => {
                                 const value = e.target.value;
                                 field.onChange(
-                                  value ? new Date(value) : undefined
+                                  value ? new Date(value) : undefined,
                                 );
                               }}
                               value={
@@ -437,7 +437,7 @@ const TeacherForm = ({
                                       CLOUDINARY_CONFIG.MAX_FILE_SIZE
                                     ) {
                                       toast.error(
-                                        "File size must be less than 2MB"
+                                        "File size must be less than 2MB",
                                       );
                                       return;
                                     }
@@ -446,11 +446,11 @@ const TeacherForm = ({
                                     const fileType = file.type.split("/")[1];
                                     if (
                                       !CLOUDINARY_CONFIG.ALLOWED_FORMATS.includes(
-                                        fileType
+                                        fileType,
                                       )
                                     ) {
                                       toast.error(
-                                        "Only JPG, PNG, and WebP files are allowed"
+                                        "Only JPG, PNG, and WebP files are allowed",
                                       );
                                       return;
                                     }
@@ -464,7 +464,7 @@ const TeacherForm = ({
                                     setShouldRemovePhoto(false);
 
                                     toast.success(
-                                      "Image selected successfully"
+                                      "Image selected successfully",
                                     );
                                   } catch (error) {
                                     toast.error("Failed to process image");

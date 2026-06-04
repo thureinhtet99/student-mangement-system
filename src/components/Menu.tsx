@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { menuItems } from "../data/menuItems";
 import { usePathname, useRouter } from "next/navigation";
-import { cn } from "@/libs/utils";
+import { cn } from "@/lib/utils";
 import {
   Accordion,
   AccordionContent,
@@ -62,7 +62,7 @@ const Menu = () => {
                           "justify-center lg:justify-start h-10 px-2 py-5 font-normal",
                           isActive(i.href)
                             ? "bg-accent text-accent-foreground text-secondColor"
-                            : "hover:bg-accent hover:text-accent-foreground"
+                            : "hover:bg-accent hover:text-accent-foreground",
                         )}
                         disabled={isPending}
                         onClick={() => {
@@ -83,7 +83,6 @@ const Menu = () => {
                         <span className="hidden lg:inline-block">
                           {i.label}
                         </span>
-                        
                       </Button>
                     );
                   }

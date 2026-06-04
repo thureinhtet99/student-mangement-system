@@ -3,7 +3,7 @@
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { resultFormSchema } from "@/libs/formSchema";
+import { resultFormSchema } from "@/lib/formSchema";
 import {
   Form,
   FormControl,
@@ -25,7 +25,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import FormActionButton from "../FormActionButton";
 import { useMutation } from "@tanstack/react-query";
-import { createResult, updateResult } from "@/libs/actions";
+import { createResult, updateResult } from "@/lib/actions";
 import { toast } from "sonner";
 import { Textarea } from "../ui/textarea";
 import { useState } from "react";
@@ -49,7 +49,7 @@ const ResultForm = ({
   const assignments = relatedData?.assignments || [];
 
   const [resultType, setResultType] = useState<"exam" | "assignment">(
-    data?.examId ? "exam" : data?.assignmentId ? "assignment" : "exam"
+    data?.examId ? "exam" : data?.assignmentId ? "assignment" : "exam",
   );
 
   const handleReset = () => {
@@ -87,14 +87,14 @@ const ResultForm = ({
     },
     onSuccess: () => {
       toast.success(
-        `Result ${type === "create" ? "created" : "updated"} successfully`
+        `Result ${type === "create" ? "created" : "updated"} successfully`,
       );
       form.reset();
       onClose?.();
     },
     onError: () => {
       toast.error(
-        `Failed to ${type === "create" ? "create" : "update"} result`
+        `Failed to ${type === "create" ? "create" : "update"} result`,
       );
     },
   });
@@ -161,7 +161,7 @@ const ResultForm = ({
                         type="text"
                         value={
                           students.find(
-                            (s: any) => s.id.toString() === field.value
+                            (s: any) => s.id.toString() === field.value,
                           )?.name || ""
                         }
                         disabled

@@ -3,7 +3,7 @@
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { assignmentFormSchema } from "@/libs/formSchema";
+import { assignmentFormSchema } from "@/lib/formSchema";
 import {
   Form,
   FormControl,
@@ -22,10 +22,10 @@ import {
 } from "@/components/ui/select";
 import { Card, CardContent } from "@/components/ui/card";
 import { useMutation } from "@tanstack/react-query";
-import { createAssignment, updateAssignment } from "@/libs/actions";
+import { createAssignment, updateAssignment } from "@/lib/actions";
 import { toast } from "sonner";
 import FormActionButton from "../FormActionButton";
-import { formatDateTimeLocal } from "@/libs/dataTimeFormat";
+import { formatDateTimeLocal } from "@/lib/dataTimeFormat";
 
 // Schema type
 type Inputs = z.infer<typeof assignmentFormSchema>;
@@ -69,14 +69,14 @@ const AssignmentForm = ({
     },
     onSuccess: () => {
       toast.success(
-        `Assignment ${type === "create" ? "created" : "updated"} successfully`
+        `Assignment ${type === "create" ? "created" : "updated"} successfully`,
       );
       form.reset();
       onClose?.();
     },
     onError: () => {
       toast.error(
-        `Failed to ${type === "create" ? "create" : "update"} assignment`
+        `Failed to ${type === "create" ? "create" : "update"} assignment`,
       );
     },
   });

@@ -2,13 +2,13 @@ import { parentColumns } from "@/data/columns";
 import { ParentListType } from "@/types";
 import { TableCell, TableRow } from "@/components/ui/table";
 import TableCard from "@/components/TableCard";
-import prisma from "@/libs/prisma";
-import { ITEM_PER_PAGE } from "@/libs/settings";
+import { prisma } from "@/lib/prisma";
+import { ITEM_PER_PAGE } from "@/lib/settings";
 import { auth } from "@clerk/nextjs/server";
 import React from "react";
 import { Prisma } from "@prisma/client";
 import FormContainer from "@/components/FormContainer";
-import { getSortOrder } from "@/libs/utils";
+import { getSortOrder } from "@/lib/utils";
 import PeopleList from "@/components/PeopleList";
 import { ROUTE_CONFIG } from "@/configs/appConfig";
 

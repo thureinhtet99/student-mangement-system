@@ -14,7 +14,7 @@ import {
   Grade,
   Admin,
   Message,
-} from "@prisma/client";
+} from "../../prisma/generated/client";
 import React from "react";
 
 export type PerformanceType = {
@@ -42,7 +42,7 @@ export type BadgeListType = {
 };
 
 export type MultiSelectBoxType<
-  T extends { id: string | number; name: string }
+  T extends { id: string | number; name: string },
 > = {
   name: string;
   subject: string;

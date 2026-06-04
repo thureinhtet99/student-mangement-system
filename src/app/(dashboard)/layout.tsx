@@ -1,5 +1,6 @@
 import Menu from "@/components/Menu";
 import Navbar from "@/components/Navbar";
+import { APP_CONFIG } from "@/configs/appConfig";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -25,7 +26,9 @@ export default function DashboardLayout({
                 className="object-cover"
               />
             </div>
-            <span className="hidden lg:block font-bold">Schooool</span>
+            <span className="hidden lg:block font-bold">
+              {APP_CONFIG.APP_NAME}
+            </span>
           </Link>
           <Menu />
         </div>

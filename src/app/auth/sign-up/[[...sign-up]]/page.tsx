@@ -14,8 +14,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Icons } from "@/components/ui/icons";
-import { cn } from "@/libs/utils";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { APP_CONFIG } from "@/configs/appConfig";
 
 export default function SignUpPage() {
   return (
@@ -34,14 +35,14 @@ export default function SignUpPage() {
                         width={40}
                         height={40}
                       />
-                      <CardTitle>Schoool</CardTitle>
+                      <CardTitle>{APP_CONFIG.APP_NAME}</CardTitle>
                     </div>
                     <CardDescription className="text-center">
                       Welcome! Create an account to get started.
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="grid gap-y-4">
-                    {/* <Clerk.Connection name="google" asChild>
+                    <Clerk.Connection name="google" asChild>
                       <Button
                         size="sm"
                         variant="outline"
@@ -61,10 +62,10 @@ export default function SignUpPage() {
                           }
                         </Clerk.Loading>
                       </Button>
-                    </Clerk.Connection> */}
-                    {/* <p className="flex items-center gap-x-3 text-sm text-muted-foreground before:h-px before:flex-1 before:bg-border after:h-px after:flex-1 after:bg-border">
+                    </Clerk.Connection>
+                    <p className="flex items-center gap-x-3 text-sm text-muted-foreground before:h-px before:flex-1 before:bg-border after:h-px after:flex-1 after:bg-border">
                       or
-                    </p> */}
+                    </p>
                     <Clerk.Field name="username" className="space-y-2">
                       <Clerk.Label asChild>
                         <Label>Username</Label>
@@ -187,7 +188,7 @@ export default function SignUpPage() {
                                         "z-10 ring-2 ring-ring ring-offset-background":
                                           status === "cursor" ||
                                           status === "selected",
-                                      }
+                                      },
                                     )}
                                   >
                                     {value}

@@ -7,10 +7,10 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { getStudentById } from "@/libs/actions";
+import { getStudentById } from "@/lib/actions";
 import { ROUTE_CONFIG } from "@/configs/appConfig";
 import FormContainer from "@/components/FormContainer";
-import { dateFormat } from "@/libs/dataTimeFormat";
+import { dateFormat } from "@/lib/dataTimeFormat";
 import { StudentListType } from "@/types";
 
 const SingleStudentPage = async ({
@@ -183,7 +183,7 @@ const SingleStudentPage = async ({
                     for (let i = 0; i < 12; i++) {
                       const monthName = new Date(currentYear, i).toLocaleString(
                         "default",
-                        { month: "long" }
+                        { month: "long" },
                       );
                       monthlyData[monthName] = {
                         present: 0,
@@ -198,7 +198,7 @@ const SingleStudentPage = async ({
                       if (attendanceDate.getFullYear() === currentYear) {
                         const monthName = attendanceDate.toLocaleString(
                           "default",
-                          { month: "long" }
+                          { month: "long" },
                         );
                         if (monthlyData[monthName]) {
                           monthlyData[monthName].total += 1;
@@ -316,7 +316,7 @@ const SingleStudentPage = async ({
                                 </span>
                               )}
                             </span>
-                          )
+                          ),
                         )
                       ) : (
                         <span>-</span>

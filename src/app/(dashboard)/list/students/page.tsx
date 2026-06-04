@@ -5,14 +5,14 @@ import { StudentListType } from "@/types";
 import { TableCell, TableRow } from "@/components/ui/table";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import TableCard from "@/components/TableCard";
-import prisma from "@/libs/prisma";
-import { ITEM_PER_PAGE } from "@/libs/settings";
-import { dateFormat } from "@/libs/dataTimeFormat";
+import { prisma } from "@/lib/prisma";
+import { ITEM_PER_PAGE } from "@/lib/settings";
+import { dateFormat } from "@/lib/dataTimeFormat";
 import { auth } from "@clerk/nextjs/server";
 import { Prisma } from "@prisma/client";
 import FormContainer from "@/components/FormContainer";
 import { ROUTE_CONFIG } from "@/configs/appConfig";
-import { getSortOrder } from "@/libs/utils";
+import { getSortOrder } from "@/lib/utils";
 import EyeButton from "@/components/EyeButton";
 
 const renderRow = async (item: StudentListType) => {

@@ -2,7 +2,7 @@ import { PieChart, Pie, ResponsiveContainer, Cell } from "recharts";
 import CustomTitle from "./CustomTitle";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { getTeacherPerformance } from "@/libs/actions";
+import { getTeacherPerformance } from "@/lib/actions";
 
 interface TeacherPerformanceServerProps {
   teacherId: string;
