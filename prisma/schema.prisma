@@ -15,6 +15,10 @@ model Admin {
   role      UserRole @default(ADMIN)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@index([email])
+  @@index([role])
+  @@map("admins")
 }
 
 model Teacher {
@@ -33,6 +37,11 @@ model Teacher {
 
   subjects Subject[]
   classes  Class[]
+
+  @@index([email])
+  @@index([phone])
+  @@index([role])
+  @@map("teachers")
 }
 
 model Student {
@@ -58,6 +67,11 @@ model Student {
 
   attendances Attendance[]
   results     Result[]
+
+  @@index([email])
+  @@index([phone])
+  @@index([role])
+  @@map("students")
 }
 
 model Parent {
@@ -72,6 +86,11 @@ model Parent {
   updatedAt DateTime @updatedAt
 
   students Student[]
+
+  @@index([email])
+  @@index([phone])
+  @@index([role])
+  @@map("parents")
 }
 
 model Class {
@@ -87,6 +106,10 @@ model Class {
   subjects      Subject[]
   events        Event[]
   announcements Announcement[]
+
+  @@index([name])
+  @@index([teacherId])
+  @@map("classes")
 }
 
 model Subject {
@@ -103,6 +126,10 @@ model Subject {
   lessons     Lesson[]
   assignments Assignment[]
   exams       Exam[]
+
+  @@index([name])
+  @@index([classId])
+  @@map("subjects")
 }
 
 model Lesson {
@@ -113,6 +140,10 @@ model Lesson {
 
   subjectId Int?
   subject   Subject? @relation(fields: [subjectId], references: [id])
+
+  @@index([name])
+  @@index([subjectId])
+  @@map("lessons")
 }
 
 model Attendance {
@@ -124,6 +155,10 @@ model Attendance {
 
   studentId String
   student   Student? @relation(fields: [studentId], references: [id])
+
+  @@index([present])
+  @@index([studentId])
+  @@map("attendances")
 }
 
 model Assignment {
@@ -137,6 +172,10 @@ model Assignment {
   subject   Subject? @relation(fields: [subjectId], references: [id])
 
   results Result[]
+
+  @@index([name])
+  @@index([subjectId])
+  @@map("assignments")
 }
 
 model Exam {
@@ -152,6 +191,10 @@ model Exam {
   subject   Subject @relation(fields: [subjectId], references: [id])
 
   results Result[]
+
+  @@index([name])
+  @@index([subjectId])
+  @@map("exams")
 }
 
 model Result {
@@ -167,6 +210,11 @@ model Result {
   assignment   Assignment? @relation(fields: [assignmentId], references: [id])
   studentId    String
   student      Student     @relation(fields: [studentId], references: [id])
+
+  @@index([examId])
+  @@index([assignmentId])
+  @@index([studentId])
+  @@map("results")
 }
 
 model Event {
@@ -180,6 +228,9 @@ model Event {
 
   classId Int?
   class   Class? @relation(fields: [classId], references: [id])
+
+  @@index([classId])
+  @@map("events")
 }
 
 model Announcement {
@@ -192,6 +243,9 @@ model Announcement {
 
   classId Int?
   class   Class? @relation(fields: [classId], references: [id])
+
+  @@index([classId])
+  @@map("announcements")
 }
 
 model Grade {
@@ -201,6 +255,9 @@ model Grade {
   updatedAt DateTime @updatedAt
 
   students Student[]
+
+  @@index([level])
+  @@map("grades")
 }
 
 model Message {
@@ -213,6 +270,10 @@ model Message {
 
   senderId   String
   receiverId String
+
+  @@index([senderId])
+  @@index([receiverId])
+  @@map("messages")
 }
 
 enum UserGender {
