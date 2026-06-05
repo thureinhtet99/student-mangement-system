@@ -3,7 +3,7 @@
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { attendanceFormSchema } from "@/libs/formSchema";
+import { attendanceFormSchema } from "@/lib/formSchema";
 import {
   Form,
   FormControl,
@@ -24,8 +24,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { createAttendance, updateAttendance } from "@/libs/actions";
-import { formatDateLocal } from "@/libs/dataTimeFormat";
+import { createAttendance, updateAttendance } from "@/lib/actions";
+import { formatDateLocal } from "@/lib/dataTimeFormat";
 import FormActionButton from "../FormActionButton";
 
 // Schema type
@@ -70,14 +70,14 @@ const AttendanceForm = ({
     },
     onSuccess: () => {
       toast.success(
-        `Attendance ${type === "create" ? "created" : "updated"} successfully`
+        `Attendance ${type === "create" ? "created" : "updated"} successfully`,
       );
       form.reset();
       onClose?.();
     },
     onError: () => {
       toast.error(
-        `Failed to ${type === "create" ? "create" : "update"} attendance`
+        `Failed to ${type === "create" ? "create" : "update"} attendance`,
       );
     },
   });
@@ -137,7 +137,7 @@ const AttendanceForm = ({
                           type="text"
                           value={
                             students.find(
-                              (s: any) => s.id.toString() === field.value
+                              (s: any) => s.id.toString() === field.value,
                             )?.name || ""
                           }
                           disabled

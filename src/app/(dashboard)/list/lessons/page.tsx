@@ -2,12 +2,12 @@ import { lessonColumns } from "@/data/columns";
 import { LessonListType } from "@/types";
 import { TableCell, TableRow } from "@/components/ui/table";
 import TableCard from "@/components/TableCard";
-import prisma from "@/libs/prisma";
-import { ITEM_PER_PAGE } from "@/libs/settings";
+import { prisma } from "@/lib/prisma";
+import { ITEM_PER_PAGE } from "@/lib/settings";
 import { auth } from "@clerk/nextjs/server";
 import { Prisma } from "@prisma/client";
 import FormContainer from "@/components/FormContainer";
-import { getSortOrder } from "@/libs/utils";
+import { getSortOrder } from "@/lib/utils";
 
 const renderRow = async (item: LessonListType) => {
   const { sessionClaims } = await auth();

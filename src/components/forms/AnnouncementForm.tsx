@@ -3,7 +3,7 @@
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { announcementFormSchema } from "@/libs/formSchema";
+import { announcementFormSchema } from "@/lib/formSchema";
 import {
   Form,
   FormControl,
@@ -24,9 +24,9 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { useMutation } from "@tanstack/react-query";
-import { createAnnouncement, updateAnnouncement } from "@/libs/actions";
+import { createAnnouncement, updateAnnouncement } from "@/lib/actions";
 import { toast } from "sonner";
-import { formatDateLocal } from "@/libs/dataTimeFormat";
+import { formatDateLocal } from "@/lib/dataTimeFormat";
 import FormActionButton from "../FormActionButton";
 
 // Schema type
@@ -73,14 +73,14 @@ const AnnouncementForm = ({
       toast.success(
         `Announcement is ${
           type === "create" ? "created" : "updated"
-        } successfully`
+        } successfully`,
       );
       form.reset();
       onClose?.();
     },
     onError: () => {
       toast.error(
-        `Failed to ${type === "create" ? "create" : "update"} announcement`
+        `Failed to ${type === "create" ? "create" : "update"} announcement`,
       );
     },
   });

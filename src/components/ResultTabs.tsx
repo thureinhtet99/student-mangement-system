@@ -3,7 +3,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState } from "react";
-import { cn } from "@/libs/utils";
+import { cn } from "@/lib/utils";
 import { LoaderCircle } from "lucide-react";
 
 interface ResultTabsProps {
@@ -79,7 +79,7 @@ export default function ResultTabs({
             "data-[state=inactive]:animate-out data-[state=inactive]:fade-out-0 data-[state=inactive]:slide-out-to-top-2",
             currentTab === "exams"
               ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-2"
+              : "opacity-0 translate-y-2",
           )}
         >
           {examContent}
@@ -93,7 +93,7 @@ export default function ResultTabs({
             "data-[state=inactive]:animate-out data-[state=inactive]:fade-out-0 data-[state=inactive]:slide-out-to-top-2",
             currentTab === "assignments"
               ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-2"
+              : "opacity-0 translate-y-2",
           )}
         >
           {assignmentContent}

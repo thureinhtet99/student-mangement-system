@@ -2,13 +2,13 @@ import { assignmentColumns } from "@/data/columns";
 import { AssignmentListType } from "@/types";
 import TableCard from "@/components/TableCard";
 import { TableCell, TableRow } from "@/components/ui/table";
-import prisma from "@/libs/prisma";
-import { ITEM_PER_PAGE } from "@/libs/settings";
+import { prisma } from "@/lib/prisma";
+import { ITEM_PER_PAGE } from "@/lib/settings";
 import { auth } from "@clerk/nextjs/server";
-import { dateTimeFormat } from "@/libs/dataTimeFormat";
+import { dateTimeFormat } from "@/lib/dataTimeFormat";
 import { Prisma } from "@prisma/client";
 import FormContainer from "@/components/FormContainer";
-import { getSortOrder } from "@/libs/utils";
+import { getSortOrder } from "@/lib/utils";
 
 const renderRow = async (item: AssignmentListType) => {
   const { sessionClaims } = await auth();

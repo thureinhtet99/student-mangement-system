@@ -1,5 +1,6 @@
 export const APP_CONFIG = {
-  APP_NAME: "Student Management System",
+  APP_NAME: "ClassMate",
+  APP_DESCRIPTION: "ClassMate student management system",
   APP_VERSION: "1.0.0",
   DEFAULT_LANGUAGE: "en",
 };
@@ -32,17 +33,15 @@ export const ROUTE_CONFIG = {
 };
 
 export const CLOUDINARY_CONFIG = {
-  CLOUD_NAME: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || "",
-  API_KEY: process.env.CLOUDINARY_API_KEY || "",
-  API_SECRET: process.env.CLOUDINARY_API_SECRET || "",
-  UPLOAD_PRESET:
-    process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET ||
-    "student_management_system",
+  CLOUD_NAME: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME!!,
+  API_KEY: process.env.CLOUDINARY_API_KEY!!,
+  API_SECRET: process.env.CLOUDINARY_API_SECRET!!,
+  UPLOAD_PRESET: process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET!!,
   FOLDER: {
-    TEACHERS: "student-management-system/teachers",
-    STUDENTS: "student-management-system/students",
-    PROFILE: "student-management-system/profiles",
-    DOCUMENTS: "student-management-system/documents",
+    TEACHERS: "classmate/teachers",
+    STUDENTS: "classmate/students",
+    PROFILE: "classmate/profiles",
+    DOCUMENTS: "classmate/documents",
   },
   TRANSFORMATION: {
     PROFILE_AVATAR: "w_200,h_200,c_fill,g_face,q_auto,f_auto",
@@ -52,5 +51,5 @@ export const CLOUDINARY_CONFIG = {
   },
   MAX_FILE_SIZE: 2 * 1024 * 1024, // 2MB
   ALLOWED_FORMATS: ["jpg", "jpeg", "png", "webp"],
-  UPLOAD_URL: `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
+  // UPLOAD_URL: `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
 };

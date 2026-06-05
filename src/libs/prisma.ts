@@ -1,7 +1,18 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "../../prisma/generated/client";
+import { Pool } from "pg";
+import { PrismaPg } from "@prisma/adapter-pg";
 
 const prismaClientSingleton = () => {
-  return new PrismaClient();
+  const pool = new Pool({
+    connectionString: `${process.env.DATABASE_URL}`.replace(
+      "sslmode=require",
+      "sslmode=no-verify",
+    ),
+  });
+
+  const adapter = new PrismaPg(pool);
+
+  return new PrismaClient({ adapter });
 };
 
 declare const globalThis: {
@@ -14,7 +25,7 @@ export default prisma;
 
 if (process.env.NODE_ENV !== "production") globalThis.prismaGlobal = prisma;
 
-// import { PrismaClient } from "@prisma/client";
+// import { PrismaClient } from "../../prisma/generated/client";
 
 // const prisma = new PrismaClient();
 // export default prisma;

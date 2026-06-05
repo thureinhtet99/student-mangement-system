@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Users, GraduationCap, User, UserCheck } from "lucide-react";
-import prisma from "@/libs/prisma";
+import { prisma } from "@/lib/prisma";
 
 const UserCard = async ({
   type,

@@ -7,10 +7,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { getTeacherById } from "@/libs/actions";
+import { getTeacherById } from "@/lib/actions";
 import { ROUTE_CONFIG } from "@/configs/appConfig";
 import FormContainer from "@/components/FormContainer";
-import { dateFormat } from "@/libs/dataTimeFormat";
+import { dateFormat } from "@/lib/dataTimeFormat";
 import { Badge } from "@/components/ui/badge";
 import Performance from "@/components/Performance";
 

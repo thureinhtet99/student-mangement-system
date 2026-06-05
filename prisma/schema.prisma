@@ -1,30 +1,32 @@
 generator client {
-  provider = "prisma-client-js"
+  provider = "prisma-client"
+  output   = "./generated"
 }
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
 
 model Admin {
-  id        String   @id @default(uuid())
-  username  String?  @unique
+  id        String   @id @default(nanoid())
   name      String
   email     String   @unique
   password  String
   role      UserRole @default(ADMIN)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@index([email])
+  @@index([role])
+  @@map("admins")
 }
 
 model Teacher {
-  id        String     @id @default(uuid())
-  username  String?    @unique
+  id        String     @id @default(nanoid())
   name      String
-  email     String?    @unique
-  password  String?
-  phone     String?    @unique
+  email     String     @unique
+  password  String
+  phone     String     @unique
   address   String?
   gender    UserGender
   birthday  DateTime?
@@ -35,15 +37,19 @@ model Teacher {
 
   subjects Subject[]
   classes  Class[]
+
+  @@index([email])
+  @@index([phone])
+  @@index([role])
+  @@map("teachers")
 }
 
 model Student {
-  id        String     @id @default(uuid())
-  username  String?    @unique
+  id        String     @id @default(nanoid())
   name      String
-  email     String?    @unique
-  password  String?
-  phone     String?    @unique
+  email     String     @unique
+  password  String
+  phone     String     @unique
   address   String?
   gender    UserGender
   birthday  DateTime?
@@ -52,30 +58,39 @@ model Student {
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
 
-  parentId String?
-  parent   Parent? @relation(fields: [parentId], references: [id])
+  parentId String
+  parent   Parent @relation(fields: [parentId], references: [id])
   classId  Int?
-  class    Class?  @relation(fields: [classId], references: [id])
+  class    Class? @relation(fields: [classId], references: [id])
   gradeId  Int?
-  grade    Grade?  @relation(fields: [gradeId], references: [id])
+  grade    Grade? @relation(fields: [gradeId], references: [id])
 
   attendances Attendance[]
   results     Result[]
+
+  @@index([email])
+  @@index([phone])
+  @@index([role])
+  @@map("students")
 }
 
 model Parent {
-  id        String   @id @default(uuid())
-  username  String?  @unique
+  id        String   @id @default(nanoid())
   name      String
-  email     String?  @unique
-  password  String?
-  phone     String?  @unique
+  email     String   @unique
+  password  String
+  phone     String   @unique
   address   String?
   role      UserRole @default(PARENT)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   students Student[]
+
+  @@index([email])
+  @@index([phone])
+  @@index([role])
+  @@map("parents")
 }
 
 model Class {
@@ -91,6 +106,10 @@ model Class {
   subjects      Subject[]
   events        Event[]
   announcements Announcement[]
+
+  @@index([name])
+  @@index([teacherId])
+  @@map("classes")
 }
 
 model Subject {
@@ -107,6 +126,10 @@ model Subject {
   lessons     Lesson[]
   assignments Assignment[]
   exams       Exam[]
+
+  @@index([name])
+  @@index([classId])
+  @@map("subjects")
 }
 
 model Lesson {
@@ -117,6 +140,10 @@ model Lesson {
 
   subjectId Int?
   subject   Subject? @relation(fields: [subjectId], references: [id])
+
+  @@index([name])
+  @@index([subjectId])
+  @@map("lessons")
 }
 
 model Attendance {
@@ -126,8 +153,12 @@ model Attendance {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  studentId String?
+  studentId String
   student   Student? @relation(fields: [studentId], references: [id])
+
+  @@index([present])
+  @@index([studentId])
+  @@map("attendances")
 }
 
 model Assignment {
@@ -141,6 +172,10 @@ model Assignment {
   subject   Subject? @relation(fields: [subjectId], references: [id])
 
   results Result[]
+
+  @@index([name])
+  @@index([subjectId])
+  @@map("assignments")
 }
 
 model Exam {
@@ -152,10 +187,14 @@ model Exam {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  subjectId Int?
-  subject   Subject? @relation(fields: [subjectId], references: [id])
+  subjectId Int
+  subject   Subject @relation(fields: [subjectId], references: [id])
 
   results Result[]
+
+  @@index([name])
+  @@index([subjectId])
+  @@map("exams")
 }
 
 model Result {
@@ -169,33 +208,44 @@ model Result {
   exam         Exam?       @relation(fields: [examId], references: [id])
   assignmentId Int?
   assignment   Assignment? @relation(fields: [assignmentId], references: [id])
-  studentId    String?
-  student      Student?    @relation(fields: [studentId], references: [id])
+  studentId    String
+  student      Student     @relation(fields: [studentId], references: [id])
+
+  @@index([examId])
+  @@index([assignmentId])
+  @@index([studentId])
+  @@map("results")
 }
 
 model Event {
-  id          Int       @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   name        String
   description String?
-  startTime   DateTime?
-  endTime     DateTime?
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  startTime   DateTime
+  endTime     DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   classId Int?
   class   Class? @relation(fields: [classId], references: [id])
+
+  @@index([classId])
+  @@map("events")
 }
 
 model Announcement {
-  id          Int       @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   name        String
   description String?
-  date        DateTime?
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  date        DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   classId Int?
   class   Class? @relation(fields: [classId], references: [id])
+
+  @@index([classId])
+  @@map("announcements")
 }
 
 model Grade {
@@ -205,10 +255,13 @@ model Grade {
   updatedAt DateTime @updatedAt
 
   students Student[]
+
+  @@index([level])
+  @@map("grades")
 }
 
 model Message {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(nanoid())
   name      String?
   content   String
   read      Boolean  @default(false)
@@ -217,6 +270,10 @@ model Message {
 
   senderId   String
   receiverId String
+
+  @@index([senderId])
+  @@index([receiverId])
+  @@map("messages")
 }
 
 enum UserGender {

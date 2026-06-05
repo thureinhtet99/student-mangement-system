@@ -4,14 +4,14 @@ import Link from "next/link";
 import { TableCell, TableRow } from "@/components/ui/table";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { teacherColumns } from "@/data/columns";
-import prisma from "@/libs/prisma";
-import { ITEM_PER_PAGE } from "@/libs/settings";
+import { prisma } from "@/lib/prisma";
+import { ITEM_PER_PAGE } from "@/lib/settings";
 import React from "react";
 import { auth } from "@clerk/nextjs/server";
 import { Prisma } from "@prisma/client";
 import { ROUTE_CONFIG } from "@/configs/appConfig";
 import TableCard from "@/components/TableCard";
-import { getSortOrder } from "@/libs/utils";
+import { getSortOrder } from "@/lib/utils";
 import BadgeList from "@/components/BadgeList";
 import EyeButton from "@/components/EyeButton";
 

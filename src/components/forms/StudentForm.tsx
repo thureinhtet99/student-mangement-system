@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
-import { studentFormSchema } from "@/libs/formSchema";
+import { studentFormSchema } from "@/lib/formSchema";
 import { useState } from "react";
 import Image from "next/image";
 import { toast } from "sonner";
@@ -24,7 +24,7 @@ import { Separator } from "@/components/ui/separator";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "../ui/label";
 import { useMutation } from "@tanstack/react-query";
-import { createStudent, updateStudent } from "@/libs/actions";
+import { createStudent, updateStudent } from "@/lib/actions";
 import {
   Select,
   SelectContent,
@@ -91,7 +91,7 @@ const StudentForm = ({
     },
     onSuccess: () => {
       toast.success(
-        `Student ${type === "create" ? "created" : "updated"} successfully`
+        `Student ${type === "create" ? "created" : "updated"} successfully`,
       );
       form.reset();
       setShouldRemovePhoto(false);
@@ -100,7 +100,7 @@ const StudentForm = ({
     },
     onError: () => {
       toast.error(
-        `Failed to ${type === "create" ? "create" : "update"} student`
+        `Failed to ${type === "create" ? "create" : "update"} student`,
       );
     },
   });
@@ -378,7 +378,7 @@ const StudentForm = ({
                               onChange={(e) => {
                                 const value = e.target.value;
                                 field.onChange(
-                                  value ? new Date(value) : undefined
+                                  value ? new Date(value) : undefined,
                                 );
                               }}
                               value={
@@ -456,7 +456,7 @@ const StudentForm = ({
                                       CLOUDINARY_CONFIG.MAX_FILE_SIZE
                                     ) {
                                       toast.error(
-                                        "File size must be less than 2MB"
+                                        "File size must be less than 2MB",
                                       );
                                       return;
                                     }
@@ -465,11 +465,11 @@ const StudentForm = ({
                                     const fileType = file.type.split("/")[1];
                                     if (
                                       !CLOUDINARY_CONFIG.ALLOWED_FORMATS.includes(
-                                        fileType
+                                        fileType,
                                       )
                                     ) {
                                       toast.error(
-                                        "Only JPG, PNG, and WebP files are allowed"
+                                        "Only JPG, PNG, and WebP files are allowed",
                                       );
                                       return;
                                     }
@@ -483,7 +483,7 @@ const StudentForm = ({
                                     setShouldRemovePhoto(false);
 
                                     toast.success(
-                                      "Image selected successfully"
+                                      "Image selected successfully",
                                     );
                                   } catch (error) {
                                     toast.error("Failed to process image");

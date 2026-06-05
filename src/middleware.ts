@@ -1,5 +1,5 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
-import { routeAccessMap } from "./libs/settings";
+import { routeAccessMap } from "./lib/settings";
 import { NextResponse } from "next/server";
 import { ROUTE_CONFIG } from "./configs/appConfig";
 
@@ -21,9 +21,8 @@ export default clerkMiddleware(async (auth, req) => {
   const role = (sessionClaims?.metadata as { role?: string })?.role;
 
   // If no role is found, redirect to sign-in
-  if (!role) {
+  if (!role)
     return NextResponse.redirect(new URL(ROUTE_CONFIG.SIGNIN, req.url));
-  }
 
   for (const { matcher, allowedRoles } of matchers) {
     if (matcher(req) && !allowedRoles.includes(role)) {

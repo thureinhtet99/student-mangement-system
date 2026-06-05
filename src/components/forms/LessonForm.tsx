@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { lessonFormSchema } from "@/libs/formSchema";
+import { lessonFormSchema } from "@/lib/formSchema";
 import {
   Form,
   FormControl,
@@ -14,7 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import FormActionButton from "../FormActionButton";
 import { useMutation } from "@tanstack/react-query";
-import { createLesson, updateLesson } from "@/libs/actions";
+import { createLesson, updateLesson } from "@/lib/actions";
 import { toast } from "sonner";
 import {
   Select,
@@ -65,14 +65,14 @@ const LessonForm = ({
     },
     onSuccess: () => {
       toast.success(
-        `Lesson ${type === "create" ? "created" : "updated"} successfully`
+        `Lesson ${type === "create" ? "created" : "updated"} successfully`,
       );
       form.reset();
       onClose?.();
     },
     onError: (error) => {
       toast.error(
-        `Failed to ${type === "create" ? "create" : "update"} lesson`
+        `Failed to ${type === "create" ? "create" : "update"} lesson`,
       );
     },
   });

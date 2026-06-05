@@ -24,7 +24,7 @@ import {
   deleteStudent,
   deleteSubject,
   deleteTeacher,
-} from "@/libs/actions";
+} from "@/lib/actions";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { FormContainerType } from "@/types";
@@ -136,7 +136,7 @@ const forms: {
     type: "create" | "update",
     data?: any,
     onClose?: () => void,
-    relatedData?: any
+    relatedData?: any,
   ) => JSX.Element;
 } = {
   teacher: (type, data, onClose, relatedData) => (
@@ -263,7 +263,7 @@ const FormContent = ({
       toast.success(
         `${
           table.charAt(0).toUpperCase() + table.slice(1)
-        } is deleted successfully`
+        } is deleted successfully`,
       );
       onClose?.();
     },
@@ -325,7 +325,7 @@ const FormModal = ({
   const handleClose = () => setOpen(false);
 
   return (
-    <Dialog open={open} onOpenChange={setOpen} >
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <div
           className={`${size} flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors`}

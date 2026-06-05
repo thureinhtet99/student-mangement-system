@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import prisma from "@/libs/prisma";
-import { getTeachers } from "@/libs/actions";
+import { prisma } from "@/lib/prisma";
+import { getTeachers } from "@/lib/actions";
 
 // Get teachers
 export async function GET() {
@@ -14,12 +14,12 @@ export async function GET() {
     });
     return NextResponse.json(
       { teachers, success: true, message: "Fetched teachers successfully" },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
     return NextResponse.json(
       { error: "Failed to fetch teachers" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

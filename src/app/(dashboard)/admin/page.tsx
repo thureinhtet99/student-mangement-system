@@ -2,13 +2,13 @@ import AttendanceChart from "@/components/AttendanceChart";
 import CountChart from "@/components/CountChart";
 import UserCard from "@/components/UserCard";
 import Announcements from "@/components/Announcements";
-import prisma from "@/libs/prisma";
+import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import Event from "@/components/Event";
 import { auth } from "@clerk/nextjs/server";
 import { ROUTE_CONFIG } from "@/configs/appConfig";
 import "react-calendar/dist/Calendar.css";
-import { getAttendances } from "@/libs/actions";
+import { getAttendances } from "@/lib/actions";
 import Calendar from "react-calendar";
 import { AttendanceListType } from "@/types";
 

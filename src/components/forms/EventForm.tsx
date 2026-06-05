@@ -3,7 +3,7 @@
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { eventFormSchema } from "@/libs/formSchema";
+import { eventFormSchema } from "@/lib/formSchema";
 import {
   Form,
   FormControl,
@@ -24,9 +24,9 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { useMutation } from "@tanstack/react-query";
-import { createEvent, updateEvent } from "@/libs/actions";
+import { createEvent, updateEvent } from "@/lib/actions";
 import { toast } from "sonner";
-import { formatDateTimeLocal } from "@/libs/dataTimeFormat";
+import { formatDateTimeLocal } from "@/lib/dataTimeFormat";
 import FormActionButton from "../FormActionButton";
 
 // Schema type
@@ -72,7 +72,7 @@ const EventForm = ({
     },
     onSuccess: () => {
       toast.success(
-        `Event is ${type === "create" ? "created" : "updated"} successfully`
+        `Event is ${type === "create" ? "created" : "updated"} successfully`,
       );
       form.reset();
       onClose?.();

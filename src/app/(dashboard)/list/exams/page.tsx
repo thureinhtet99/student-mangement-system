@@ -2,13 +2,13 @@ import { examColumns } from "@/data/columns";
 import { ExamListType } from "@/types";
 import TableCard from "@/components/TableCard";
 import { TableCell, TableRow } from "@/components/ui/table";
-import prisma from "@/libs/prisma";
-import { ITEM_PER_PAGE } from "@/libs/settings";
-import { dateFormat, timeFormat } from "@/libs/dataTimeFormat";
+import { prisma } from "@/lib/prisma";
+import { ITEM_PER_PAGE } from "@/lib/settings";
+import { dateFormat, timeFormat } from "@/lib/dataTimeFormat";
 import { auth } from "@clerk/nextjs/server";
 import { Prisma } from "@prisma/client";
 import FormContainer from "@/components/FormContainer";
-import { getSortOrder } from "@/libs/utils";
+import { getSortOrder } from "@/lib/utils";
 
 const renderRow = async (item: ExamListType) => {
   const { sessionClaims } = await auth();

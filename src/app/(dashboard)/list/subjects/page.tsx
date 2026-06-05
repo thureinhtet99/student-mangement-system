@@ -2,12 +2,12 @@ import { subjectColumns } from "@/data/columns";
 import { TableCell, TableRow } from "@/components/ui/table";
 import TableCard from "@/components/TableCard";
 import { SubjectListType } from "@/types";
-import prisma from "@/libs/prisma";
-import { ITEM_PER_PAGE } from "@/libs/settings";
+import { prisma } from "@/lib/prisma";
+import { ITEM_PER_PAGE } from "@/lib/settings";
 import React from "react";
 import { auth } from "@clerk/nextjs/server";
 import FormContainer from "@/components/FormContainer";
-import { getSortOrder } from "@/libs/utils";
+import { getSortOrder } from "@/lib/utils";
 import { ROUTE_CONFIG } from "@/configs/appConfig";
 import { Prisma } from "@prisma/client";
 import BadgeList from "@/components/BadgeList";
@@ -113,7 +113,7 @@ const SubjectListPage = async ({
       ? searchCondition
       : {
           AND: [searchCondition].filter(
-            (condition) => Object.keys(condition).length > 0
+            (condition) => Object.keys(condition).length > 0,
           ),
         };
 

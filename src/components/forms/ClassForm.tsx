@@ -14,10 +14,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
-import { createClass, updateClass } from "@/libs/actions";
+import { createClass, updateClass } from "@/lib/actions";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { classFormSchema } from "@/libs/formSchema";
+import { classFormSchema } from "@/lib/formSchema";
 import {
   Select,
   SelectContent,
@@ -44,10 +44,10 @@ const ClassForm = ({
   relatedData?: any;
 }) => {
   const [selectedSubjects, setSelectedSubjects] = useState<(string | number)[]>(
-    data?.subjects?.map((t: any) => t.id) || []
+    data?.subjects?.map((t: any) => t.id) || [],
   );
   const [selectedStudents, setSelectedStudents] = useState<(string | number)[]>(
-    data?.students?.map((t: any) => t.id) || []
+    data?.students?.map((t: any) => t.id) || [],
   );
 
   const initialSelectedStudents = data?.students?.map((t: any) => t.id) || [];
@@ -90,7 +90,7 @@ const ClassForm = ({
     },
     onSuccess: () => {
       toast.success(
-        `Class is ${type === "create" ? "created" : "updated"} successfully`
+        `Class is ${type === "create" ? "created" : "updated"} successfully`,
       );
       form.reset();
       setSelectedSubjects([]);
