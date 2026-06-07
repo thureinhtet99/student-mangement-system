@@ -3,7 +3,7 @@ import { ParentListType } from "@/types";
 import { TableCell, TableRow } from "@/components/ui/table";
 import TableCard from "@/components/TableCard";
 import { prisma } from "@/lib/prisma";
-import { ITEM_PER_PAGE } from "@/lib/settings";
+import { ITEM_PER_PAGE } from "@/lib/routeAccess";
 import { auth } from "@clerk/nextjs/server";
 import React from "react";
 import { Prisma } from "@prisma/client";

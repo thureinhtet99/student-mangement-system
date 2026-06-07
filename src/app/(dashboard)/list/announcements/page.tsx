@@ -6,7 +6,7 @@ import { TableCell, TableRow } from "@/components/ui/table";
 import { announcementColumns } from "@/data/columns";
 import { dateFormat } from "@/lib/dataTimeFormat";
 import { prisma } from "@/lib/prisma";
-import { ITEM_PER_PAGE } from "@/lib/settings";
+import { ITEM_PER_PAGE } from "@/lib/routeAccess";
 import { getSortOrder } from "@/lib/utils";
 import { AnnouncementListType } from "@/types";
 import { auth } from "@clerk/nextjs/server";

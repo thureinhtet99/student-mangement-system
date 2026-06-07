@@ -4,7 +4,7 @@ import { TableCell, TableRow } from "@/components/ui/table";
 import TableCard from "@/components/TableCard";
 import ResultTabs from "@/components/ResultTabs";
 import { prisma } from "@/lib/prisma";
-import { ITEM_PER_PAGE } from "@/lib/settings";
+import { ITEM_PER_PAGE } from "@/lib/routeAccess";
 import { dateFormat } from "@/lib/dataTimeFormat";
 import { auth } from "@clerk/nextjs/server";
 import { Prisma } from "@prisma/client";

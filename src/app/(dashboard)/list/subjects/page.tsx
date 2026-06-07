@@ -3,7 +3,7 @@ import { TableCell, TableRow } from "@/components/ui/table";
 import TableCard from "@/components/TableCard";
 import { SubjectListType } from "@/types";
 import { prisma } from "@/lib/prisma";
-import { ITEM_PER_PAGE } from "@/lib/settings";
+import { ITEM_PER_PAGE } from "@/lib/routeAccess";
 import React from "react";
 import { auth } from "@clerk/nextjs/server";
 import FormContainer from "@/components/FormContainer";

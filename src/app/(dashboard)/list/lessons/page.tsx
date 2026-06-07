@@ -3,7 +3,7 @@ import { LessonListType } from "@/types";
 import { TableCell, TableRow } from "@/components/ui/table";
 import TableCard from "@/components/TableCard";
 import { prisma } from "@/lib/prisma";
-import { ITEM_PER_PAGE } from "@/lib/settings";
+import { ITEM_PER_PAGE } from "@/lib/routeAccess";
 import { auth } from "@clerk/nextjs/server";
 import { Prisma } from "@prisma/client";
 import FormContainer from "@/components/FormContainer";

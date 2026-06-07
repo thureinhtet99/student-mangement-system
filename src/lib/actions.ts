@@ -16,7 +16,7 @@ import {
   ResultFormSchema,
   MessageFormSchema,
 } from "./formSchema";
-import prisma from "./prisma";
+import { prisma } from "./prisma";
 import cloudinary from "./cloudinary";
 import { CLOUDINARY_CONFIG, ROUTE_CONFIG } from "@/configs/appConfig";
 import { clerkClient } from "@clerk/nextjs/server";
@@ -37,7 +37,7 @@ export const getTeachers = async () => {
     return { teachers, success: true, error: false };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to get teachers"
+      error instanceof Error ? error.message : "Failed to get teachers",
     );
   }
 };
@@ -55,7 +55,7 @@ export const getTeacherById = async (id: string) => {
     return { teacher, success: true, error: false };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to get teacher by id"
+      error instanceof Error ? error.message : "Failed to get teacher by id",
     );
   }
 };
@@ -118,13 +118,13 @@ export const getTeacherPerformance = async (teacherId: string) => {
         totalResults += relevantResults.length;
         totalScore += relevantResults.reduce(
           (sum, result) => sum + result.score,
-          0
+          0,
         );
 
         // Count attendances
         totalAttendances += student.attendances.length;
         presentAttendances += student.attendances.filter(
-          (att) => att.present
+          (att) => att.present,
         ).length;
       }
     }
@@ -155,14 +155,14 @@ export const getTeacherPerformance = async (teacherId: string) => {
             (attendanceRate / 100) * 0.3 +
             (passRate / 100) * 0.3) *
             10 *
-            10
+            10,
         ) / 10,
     };
 
     return { performance, success: true, error: false };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to get performance "
+      error instanceof Error ? error.message : "Failed to get performance ",
     );
   }
 };
@@ -184,7 +184,7 @@ export const getStudents = async () => {
     return { students, success: true, error: false };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to get students"
+      error instanceof Error ? error.message : "Failed to get students",
     );
   }
 };
@@ -226,7 +226,7 @@ export const getStudentById = async (id: string) => {
     return { student, success: true, error: false };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to get student by id"
+      error instanceof Error ? error.message : "Failed to get student by id",
     );
   }
 };
@@ -242,7 +242,7 @@ export const getParents = async () => {
     return { parents, success: true, error: false };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to get parents"
+      error instanceof Error ? error.message : "Failed to get parents",
     );
   }
 };
@@ -257,7 +257,7 @@ export const getParentById = async (id: string) => {
     return { parent, success: true, error: false };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to get parent by id"
+      error instanceof Error ? error.message : "Failed to get parent by id",
     );
   }
 };
@@ -279,7 +279,7 @@ export const getClasses = async () => {
     return { classItems, success: true, error: false };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to get classes"
+      error instanceof Error ? error.message : "Failed to get classes",
     );
   }
 };
@@ -300,7 +300,7 @@ export const getClassById = async ({ id }: { id: number }) => {
     return { classById, success: true, error: false };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to get class by id"
+      error instanceof Error ? error.message : "Failed to get class by id",
     );
   }
 };
@@ -322,7 +322,7 @@ export const getSubjects = async () => {
     return { subjects, success: true, error: false };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to get subjects"
+      error instanceof Error ? error.message : "Failed to get subjects",
     );
   }
 };
@@ -343,7 +343,7 @@ export const getSubjectById = async ({ id }: { id: number }) => {
     return { subject, success: true, error: false };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to get subject by id"
+      error instanceof Error ? error.message : "Failed to get subject by id",
     );
   }
 };
@@ -361,7 +361,7 @@ export const getLessons = async () => {
     return { lessons, success: true, error: false };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to get lessons"
+      error instanceof Error ? error.message : "Failed to get lessons",
     );
   }
 };
@@ -396,7 +396,7 @@ export const getAttendances = async () => {
     return { attendances, success: true, error: false };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to get attendances"
+      error instanceof Error ? error.message : "Failed to get attendances",
     );
   }
 };
@@ -415,7 +415,7 @@ export const getAssignments = async () => {
     return { assignments, success: true, error: false };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to get assignments"
+      error instanceof Error ? error.message : "Failed to get assignments",
     );
   }
 };
@@ -452,7 +452,7 @@ export const getExams = async () => {
     return { exams, success: true, error: false };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to get exams"
+      error instanceof Error ? error.message : "Failed to get exams",
     );
   }
 };
@@ -470,7 +470,7 @@ export const getExamById = async ({ id }: { id: number }) => {
     return { exam, success: true, error: false };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to get exam by id"
+      error instanceof Error ? error.message : "Failed to get exam by id",
     );
   }
 };
@@ -490,7 +490,7 @@ export const getResults = async () => {
     return { results, success: true, error: false };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to get results"
+      error instanceof Error ? error.message : "Failed to get results",
     );
   }
 };
@@ -533,7 +533,7 @@ export const getResultsByStudent = async (studentId: string) => {
     throw new Error(
       error instanceof Error
         ? error.message
-        : "Failed to get results by student"
+        : "Failed to get results by student",
     );
   }
 };
@@ -551,7 +551,7 @@ export const getEvents = async () => {
     return { events, success: true, error: false };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to get events"
+      error instanceof Error ? error.message : "Failed to get events",
     );
   }
 };
@@ -569,7 +569,7 @@ export const getAnnouncements = async () => {
     return { announcements, success: true, error: false };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to get announcements"
+      error instanceof Error ? error.message : "Failed to get announcements",
     );
   }
 };
@@ -584,7 +584,7 @@ export const getMessages = async () => {
     return { messages, success: true, error: false };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to get messages"
+      error instanceof Error ? error.message : "Failed to get messages",
     );
   }
 };
@@ -616,7 +616,7 @@ export const getMessagesByUser = async (userId: string) => {
     return { messages, success: true, error: false };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to get messages by user"
+      error instanceof Error ? error.message : "Failed to get messages by user",
     );
   }
 };
@@ -661,20 +661,19 @@ export const createTeacher = async (data: TeacherFormSchema) => {
             {
               folder: `${CLOUDINARY_CONFIG.FOLDER.TEACHERS}`,
               resource_type: "auto",
-            }
+            },
           );
           imageUrl = uploadResponse.secure_url;
         }
       }
     } catch (error) {
       throw new Error(
-        error instanceof Error ? error.message : "Failed to create image"
+        error instanceof Error ? error.message : "Failed to create image",
       );
     }
 
     const teacher = await prisma.teacher.create({
       data: {
-        username: data.username,
         email: data.email,
         name: data.name,
         phone: data.phone,
@@ -721,7 +720,7 @@ export const createTeacher = async (data: TeacherFormSchema) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to create teacher"
+      error instanceof Error ? error.message : "Failed to create teacher",
     );
   }
 };
@@ -765,14 +764,14 @@ export const createStudent = async (data: StudentFormSchema) => {
             {
               folder: `${CLOUDINARY_CONFIG.FOLDER.STUDENTS}`,
               resource_type: "auto",
-            }
+            },
           );
           imageUrl = uploadResponse.secure_url;
         }
       }
     } catch (error) {
       throw new Error(
-        error instanceof Error ? error.message : "Failed to create image"
+        error instanceof Error ? error.message : "Failed to create image",
       );
     }
 
@@ -825,7 +824,7 @@ export const createStudent = async (data: StudentFormSchema) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to create student"
+      error instanceof Error ? error.message : "Failed to create student",
     );
   }
 };
@@ -877,7 +876,7 @@ export const createParent = async (data: ParentFormSchema) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to create parent"
+      error instanceof Error ? error.message : "Failed to create parent",
     );
   }
 };
@@ -925,7 +924,7 @@ export const createClass = async (data: ClassFormSchema) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to create class"
+      error instanceof Error ? error.message : "Failed to create class",
     );
   }
 };
@@ -975,7 +974,7 @@ export const createSubject = async (data: SubjectFormSchema) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to create subject"
+      error instanceof Error ? error.message : "Failed to create subject",
     );
   }
 };
@@ -1013,7 +1012,7 @@ export const createLesson = async (data: LessonFormSchema) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to create lesson"
+      error instanceof Error ? error.message : "Failed to create lesson",
     );
   }
 };
@@ -1040,7 +1039,7 @@ export const createAttendance = async (data: AttendanceFormSchema) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to create attendance"
+      error instanceof Error ? error.message : "Failed to create attendance",
     );
   }
 };
@@ -1076,7 +1075,7 @@ export const createAssignment = async (data: AssignmentFormSchema) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to create assignment"
+      error instanceof Error ? error.message : "Failed to create assignment",
     );
   }
 };
@@ -1117,7 +1116,7 @@ export const createExam = async (data: ExamFormSchema) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to create exam"
+      error instanceof Error ? error.message : "Failed to create exam",
     );
   }
 };
@@ -1169,7 +1168,7 @@ export const createResult = async (data: ResultFormSchema) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to create result"
+      error instanceof Error ? error.message : "Failed to create result",
     );
   }
 };
@@ -1210,7 +1209,7 @@ export const createEvent = async (data: EventFormSchema) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to create event"
+      error instanceof Error ? error.message : "Failed to create event",
     );
   }
 };
@@ -1251,7 +1250,7 @@ export const createAnnouncement = async (data: AnnouncementFormSchema) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to create announcement"
+      error instanceof Error ? error.message : "Failed to create announcement",
     );
   }
 };
@@ -1331,14 +1330,14 @@ export const updateTeacher = async (data: TeacherFormSchema) => {
             .shift();
           if (publicId) {
             await cloudinary.uploader.destroy(
-              `${CLOUDINARY_CONFIG.FOLDER.TEACHERS}/${publicId}`
+              `${CLOUDINARY_CONFIG.FOLDER.TEACHERS}/${publicId}`,
             );
           }
         }
         imageUrl = null;
       } catch (error) {
         throw new Error(
-          error instanceof Error ? error.message : "Failed to remove image"
+          error instanceof Error ? error.message : "Failed to remove image",
         );
       }
     }
@@ -1353,7 +1352,7 @@ export const updateTeacher = async (data: TeacherFormSchema) => {
             .shift();
           if (publicId) {
             await cloudinary.uploader.destroy(
-              `${CLOUDINARY_CONFIG.FOLDER.TEACHERS}/${publicId}`
+              `${CLOUDINARY_CONFIG.FOLDER.TEACHERS}/${publicId}`,
             );
           }
         }
@@ -1368,7 +1367,7 @@ export const updateTeacher = async (data: TeacherFormSchema) => {
             {
               folder: `${CLOUDINARY_CONFIG.FOLDER.TEACHERS}`,
               resource_type: "auto",
-            }
+            },
           );
           imageUrl = uploadResponse.secure_url;
         } else {
@@ -1376,7 +1375,7 @@ export const updateTeacher = async (data: TeacherFormSchema) => {
         }
       } catch (error) {
         throw new Error(
-          error instanceof Error ? error.message : "Failed to update image"
+          error instanceof Error ? error.message : "Failed to update image",
         );
       }
     }
@@ -1416,7 +1415,7 @@ export const updateTeacher = async (data: TeacherFormSchema) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to update teacher"
+      error instanceof Error ? error.message : "Failed to update teacher",
     );
   }
 };
@@ -1467,14 +1466,14 @@ export const updateStudent = async (data: StudentFormSchema) => {
             .shift();
           if (publicId) {
             await cloudinary.uploader.destroy(
-              `${CLOUDINARY_CONFIG.FOLDER.STUDENTS}/${publicId}`
+              `${CLOUDINARY_CONFIG.FOLDER.STUDENTS}/${publicId}`,
             );
           }
         }
         imageUrl = null;
       } catch (error) {
         throw new Error(
-          error instanceof Error ? error.message : "Failed to remove image"
+          error instanceof Error ? error.message : "Failed to remove image",
         );
       }
     } else if (data.image) {
@@ -1487,7 +1486,7 @@ export const updateStudent = async (data: StudentFormSchema) => {
             .shift();
           if (publicId) {
             await cloudinary.uploader.destroy(
-              `${CLOUDINARY_CONFIG.FOLDER.STUDENTS}/${publicId}`
+              `${CLOUDINARY_CONFIG.FOLDER.STUDENTS}/${publicId}`,
             );
           }
         }
@@ -1502,7 +1501,7 @@ export const updateStudent = async (data: StudentFormSchema) => {
             {
               folder: `${CLOUDINARY_CONFIG.FOLDER.STUDENTS}`,
               resource_type: "auto",
-            }
+            },
           );
           imageUrl = uploadResponse.secure_url;
         } else {
@@ -1510,7 +1509,7 @@ export const updateStudent = async (data: StudentFormSchema) => {
         }
       } catch (error) {
         throw new Error(
-          error instanceof Error ? error.message : "Failed to update image"
+          error instanceof Error ? error.message : "Failed to update image",
         );
       }
     }
@@ -1552,7 +1551,7 @@ export const updateStudent = async (data: StudentFormSchema) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to update student"
+      error instanceof Error ? error.message : "Failed to update student",
     );
   }
 };
@@ -1606,7 +1605,7 @@ export const updateParent = async (data: ParentFormSchema) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to update parent"
+      error instanceof Error ? error.message : "Failed to update parent",
     );
   }
 };
@@ -1666,7 +1665,7 @@ export const updateClass = async (data: ClassFormSchema) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to update class"
+      error instanceof Error ? error.message : "Failed to update class",
     );
   }
 };
@@ -1727,7 +1726,7 @@ export const updateSubject = async (data: SubjectFormSchema) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to update subject"
+      error instanceof Error ? error.message : "Failed to update subject",
     );
   }
 };
@@ -1777,7 +1776,7 @@ export const updateLesson = async (data: LessonFormSchema) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to update lesson"
+      error instanceof Error ? error.message : "Failed to update lesson",
     );
   }
 };
@@ -1812,7 +1811,7 @@ export const updateAttendance = async (data: AttendanceFormSchema) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to update attendance"
+      error instanceof Error ? error.message : "Failed to update attendance",
     );
   }
 };
@@ -1845,7 +1844,7 @@ export const updateAssignment = async (data: AssignmentFormSchema) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to update assignment"
+      error instanceof Error ? error.message : "Failed to update assignment",
     );
   }
 };
@@ -1886,7 +1885,7 @@ export const updateExam = async (data: ExamFormSchema) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to update exam"
+      error instanceof Error ? error.message : "Failed to update exam",
     );
   }
 };
@@ -1925,7 +1924,7 @@ export const updateResult = async (data: ResultFormSchema) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to update result"
+      error instanceof Error ? error.message : "Failed to update result",
     );
   }
 };
@@ -1978,7 +1977,7 @@ export const updateEvent = async (data: EventFormSchema) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to update event"
+      error instanceof Error ? error.message : "Failed to update event",
     );
   }
 };
@@ -2030,7 +2029,7 @@ export const updateAnnouncement = async (data: AnnouncementFormSchema) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to update announcement"
+      error instanceof Error ? error.message : "Failed to update announcement",
     );
   }
 };
@@ -2049,7 +2048,7 @@ export const deleteTeacher = async ({ id }: { id: string }) => {
         const publicId = existingTeacher.image.split("/").pop()?.split(".")[0];
         if (publicId) {
           await cloudinary.uploader.destroy(
-            `${CLOUDINARY_CONFIG.FOLDER.TEACHERS}/${publicId}`
+            `${CLOUDINARY_CONFIG.FOLDER.TEACHERS}/${publicId}`,
           );
         }
       } catch (cloudinaryError) {
@@ -2069,7 +2068,7 @@ export const deleteTeacher = async ({ id }: { id: string }) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to delete teacher"
+      error instanceof Error ? error.message : "Failed to delete teacher",
     );
   }
 };
@@ -2087,7 +2086,7 @@ export const deleteStudent = async ({ id }: { id: string }) => {
         const publicId = existingStudent.image.split("/").pop()?.split(".")[0];
         if (publicId) {
           await cloudinary.uploader.destroy(
-            `${CLOUDINARY_CONFIG.FOLDER.STUDENTS}/${publicId}`
+            `${CLOUDINARY_CONFIG.FOLDER.STUDENTS}/${publicId}`,
           );
         }
       } catch (cloudinaryError) {
@@ -2107,7 +2106,7 @@ export const deleteStudent = async ({ id }: { id: string }) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to delete student"
+      error instanceof Error ? error.message : "Failed to delete student",
     );
   }
 };
@@ -2132,7 +2131,7 @@ export const deleteClass = async ({ id }: { id: number }) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to delete class"
+      error instanceof Error ? error.message : "Failed to delete class",
     );
   }
 };
@@ -2157,7 +2156,7 @@ export const deleteSubject = async ({ id }: { id: number }) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to delete subject"
+      error instanceof Error ? error.message : "Failed to delete subject",
     );
   }
 };
@@ -2182,7 +2181,7 @@ export const deleteParent = async ({ id }: { id: string }) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to delete parent"
+      error instanceof Error ? error.message : "Failed to delete parent",
     );
   }
 };
@@ -2206,7 +2205,7 @@ export const deleteLesson = async ({ id }: { id: number }) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to delete lesson"
+      error instanceof Error ? error.message : "Failed to delete lesson",
     );
   }
 };
@@ -2230,7 +2229,7 @@ export const deleteExam = async ({ id }: { id: number }) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to delete exam"
+      error instanceof Error ? error.message : "Failed to delete exam",
     );
   }
 };
@@ -2254,7 +2253,7 @@ export const deleteAssignment = async ({ id }: { id: number }) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to delete assignment"
+      error instanceof Error ? error.message : "Failed to delete assignment",
     );
   }
 };
@@ -2278,7 +2277,7 @@ export const deleteResult = async ({ id }: { id: number }) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to delete result"
+      error instanceof Error ? error.message : "Failed to delete result",
     );
   }
 };
@@ -2302,7 +2301,7 @@ export const deleteAttendance = async ({ id }: { id: number }) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to delete attendance"
+      error instanceof Error ? error.message : "Failed to delete attendance",
     );
   }
 };
@@ -2326,7 +2325,7 @@ export const deleteEvent = async ({ id }: { id: number }) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to delete event"
+      error instanceof Error ? error.message : "Failed to delete event",
     );
   }
 };
@@ -2350,7 +2349,7 @@ export const deleteAnnouncement = async ({ id }: { id: number }) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to delete announcement"
+      error instanceof Error ? error.message : "Failed to delete announcement",
     );
   }
 };
@@ -2382,7 +2381,7 @@ export const updateMessage = async (data: MessageFormSchema) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to update message"
+      error instanceof Error ? error.message : "Failed to update message",
     );
   }
 };
@@ -2410,7 +2409,7 @@ export const markMessageAsRead = async ({ id }: { id: number }) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to mark message as read"
+      error instanceof Error ? error.message : "Failed to mark message as read",
     );
   }
 };
@@ -2434,7 +2433,7 @@ export const deleteMessage = async ({ id }: { id: number }) => {
     };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to delete message"
+      error instanceof Error ? error.message : "Failed to delete message",
     );
   }
 };
@@ -2463,7 +2462,7 @@ export const getTeachersBySubject = async (subjectId: number) => {
     throw new Error(
       error instanceof Error
         ? error.message
-        : "Failed to get teachers by subject"
+        : "Failed to get teachers by subject",
     );
   }
 };
@@ -2486,7 +2485,9 @@ export const getStudentsByClass = async (classId: number) => {
     return { students, success: true, error: false };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to get students by class"
+      error instanceof Error
+        ? error.message
+        : "Failed to get students by class",
     );
   }
 };
@@ -2514,7 +2515,7 @@ export const getEventsByDateRange = async (startDate: Date, endDate: Date) => {
     throw new Error(
       error instanceof Error
         ? error.message
-        : "Failed to get events by date range"
+        : "Failed to get events by date range",
     );
   }
 };
@@ -2523,7 +2524,7 @@ export const getEventsByDateRange = async (startDate: Date, endDate: Date) => {
 export const getAttendanceByStudentAndDateRange = async (
   studentId: string,
   startDate: Date,
-  endDate: Date
+  endDate: Date,
 ) => {
   try {
     const attendances = await prisma.attendance.findMany({
@@ -2547,7 +2548,7 @@ export const getAttendanceByStudentAndDateRange = async (
     throw new Error(
       error instanceof Error
         ? error.message
-        : "Failed to get attendance by student and date range"
+        : "Failed to get attendance by student and date range",
     );
   }
 };
@@ -2573,7 +2574,7 @@ export const getUpcomingExams = async () => {
     return { exams, success: true, error: false };
   } catch (error) {
     throw new Error(
-      error instanceof Error ? error.message : "Failed to get upcoming exams"
+      error instanceof Error ? error.message : "Failed to get upcoming exams",
     );
   }
 };
@@ -2605,7 +2606,7 @@ export const getAssignmentsDueSoon = async (daysAhead: number = 7) => {
     throw new Error(
       error instanceof Error
         ? error.message
-        : "Failed to get assignments due soon"
+        : "Failed to get assignments due soon",
     );
   }
 };

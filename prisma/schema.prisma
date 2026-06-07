@@ -17,7 +17,6 @@ model Admin {
   updatedAt DateTime @updatedAt
 
   @@index([email])
-  @@index([role])
   @@map("admins")
 }
 
@@ -40,7 +39,7 @@ model Teacher {
 
   @@index([email])
   @@index([phone])
-  @@index([role])
+  @@index([gender])
   @@map("teachers")
 }
 
@@ -70,7 +69,7 @@ model Student {
 
   @@index([email])
   @@index([phone])
-  @@index([role])
+  @@index([gender])
   @@map("students")
 }
 
@@ -89,7 +88,6 @@ model Parent {
 
   @@index([email])
   @@index([phone])
-  @@index([role])
   @@map("parents")
 }
 
@@ -107,7 +105,6 @@ model Class {
   events        Event[]
   announcements Announcement[]
 
-  @@index([name])
   @@index([teacherId])
   @@map("classes")
 }
@@ -127,7 +124,6 @@ model Subject {
   assignments Assignment[]
   exams       Exam[]
 
-  @@index([name])
   @@index([classId])
   @@map("subjects")
 }
@@ -141,7 +137,6 @@ model Lesson {
   subjectId Int?
   subject   Subject? @relation(fields: [subjectId], references: [id])
 
-  @@index([name])
   @@index([subjectId])
   @@map("lessons")
 }
@@ -173,7 +168,6 @@ model Assignment {
 
   results Result[]
 
-  @@index([name])
   @@index([subjectId])
   @@map("assignments")
 }
@@ -192,7 +186,6 @@ model Exam {
 
   results Result[]
 
-  @@index([name])
   @@index([subjectId])
   @@map("exams")
 }

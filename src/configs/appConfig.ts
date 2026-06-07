@@ -1,7 +1,7 @@
 export const APP_CONFIG = {
   APP_NAME: "ClassMate",
   APP_DESCRIPTION: "ClassMate student management system",
-  APP_VERSION: "1.0.0",
+  APP_VERSION: "0.1.0",
   DEFAULT_LANGUAGE: "en",
 };
 
